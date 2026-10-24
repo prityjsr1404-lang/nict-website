@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}Toppers | {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <div class="container">
+        <h1>100/100 Toppers</h1>
+        <p>Our students consistently secure perfect scores in Board Exams.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="grid grid-3">
+        {% for t in toppers %}
+        <div class="topper-card">
+            <div class="marks-badge">100 / 100 MARKS</div>
+            <div class="topper-info">
+                <div class="avatar-circle">{{ t.initials }}</div>
+                <div>
+                    <h3>{{ t.name }}</h3>
+                    <p>{{ t.school }}</p>
+                    <span class="course-tag">{{ t.course }}</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}School Syllabus | {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-header text-center">
+    <div class="container">
+        <span class="text-blue-light">ACADEMIC ACADEMIC COACHING</span>
+        <h1>School Board Computer Syllabus</h1>
+        <p>Tailored coaching according to ICSE, ISC, CBSE & JAC board standards.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="grid grid-3">
+        {% for s in syllabus %}
+        <div class="syllabus-card">
+            <div class="syllabus-top">
+                <span class="badge-blue">{{ s.badge }}</span>
+                <span class="icon">{{ s.icon }}</span>
+            </div>
+            <h3>{{ s.title }}</h3>
+            <ul class="check-list">
+                {% for point in s.points %}
+                <li>✓ {{ point }}</li>
+                {% endfor %}
+            </ul>
+            <a href="{{ url_for('contact') }}" class="btn-secondary">Enquire For Batch</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

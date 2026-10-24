@@ -6,109 +6,130 @@
     <title>Document</title>
 </head>
 <body>
-    {% extends "base.html" %}
-{% block title %}{{ INSTITUTE_NAME }} · Shaping Future Innovators{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}Home | {{ INSTITUTE_NAME }}{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <div class="container hero-inner">
+
+<!-- ==================== HERO SECTION ==================== -->
+<section class="hero-section">
+    <div class="container hero-grid">
+        
+        <!-- Left Side: Text Content -->
         <div class="hero-text">
-            <span class="badge">25 Years of Excellence · NAAC A+</span>
-            <h1>Shaping the Next Generation of <span class="accent">Tech Innovators</span></h1>
-            <p>For 25 years, NICT has been the launchpad for 12,000+ technology leaders. World-class programs, cutting-edge facilities, and an unwavering focus on your future.</p>
-            <div class="hero-actions">
-                <a href="{{ url_for('courses') }}" class="btn btn-primary">Explore Programs</a>
-                <a href="{{ url_for('contact') }}" class="btn btn-outline">Admission Enquiry</a>
+            <span class="badge-yellow">⭐ Jamshedpur's #1 Premier Computer Academy</span>
+            
+            <h1>Score <span class="text-orange">100/100</span> in Board Exams & Build Tech Careers.</h1>
+            
+            <p class="hero-sub">
+                Comprehensive Computer Coaching for ICSE, ISC, CBSE & JAC Boards alongside industry-recognized professional courses in Bagbera & Laxminagar.
+            </p>
+            
+            <!-- Hero Feature Tags -->
+            <div class="hero-tags">
+                {% for stat in stats %}
+                <div class="tag-item">{{ stat.icon }} {{ stat.text }}</div>
+                {% endfor %}
+            </div>
+
+            <!-- Branch Contact Pills -->
+            <div class="hero-branch-pills">
+                <div class="pill green">📍 Bagbera Branch ({{ MAIN_BRANCH.phone }})</div>
+                <div class="pill green">📍 Laxminagar Branch ({{ NEW_BRANCH.phone }})</div>
             </div>
         </div>
-    </div>
-</section>
 
-<section class="container section">
-    <div class="stats-bar">
-        {% for s in stats %}
-        <div class="stat">
-            <div class="stat-value">{{ s.value }}</div>
-            <div class="stat-label">{{ s.label }}</div>
+        <!-- Right Side: Discount Form Card -->
+        <div class="hero-card">
+            <div class="limited-seats">LIMITED SEATS</div>
+            <div class="card-icon">%</div>
+            
+            <h2>Lump-Sum Special Offer</h2>
+            <p>Enroll now for any School or Professional Diploma Course & unlock an instant flat discount!</p>
+            
+            <div class="discount-box">
+                <h3>FLAT 10% OFF</h3>
+                <span>ON FULL ONE-TIME FEE PAYMENT</span>
+            </div>
+            
+            <a href="{{ url_for('contact') }}" class="btn-primary">CLAIM DISCOUNT & REGISTER NOW</a>
         </div>
-        {% endfor %}
+        
     </div>
 </section>
 
-<section class="container section">
-    <div class="section-head">
-        <h2>Why NICT?</h2>
-        <p>A legacy of academic excellence backed by modern infrastructure and industry connection.</p>
-    </div>
-    <div class="grid grid-3">
-        {% for h in highlights %}
-        <div class="card">
-            <div class="card-icon">{{ h.icon }}</div>
-            <h3>{{ h.title }}</h3>
-            <p>{{ h.desc }}</p>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
-<section class="container section">
-    <div class="section-head">
-        <h2>Featured Programs</h2>
-        <p>Industry-aligned degrees designed for the careers of tomorrow.</p>
-    </div>
-    <div class="grid grid-3">
-        {% for p in programs %}
-        <div class="program-card">
-            <span class="level-tag">{{ p.level }}</span>
-            <h3>{{ p.name }}</h3>
-            <p class="program-meta">{{ p.duration }} · {{ p.seats }} seats</p>
-            <ul class="pill-list">
-                {% for f in p.highlights %}<li>{{ f }}</li>{% endfor %}
-            </ul>
-            <a href="{{ url_for('courses') }}" class="link-more">View details →</a>
-        </div>
-        {% endfor %}
-    </div>
-</section>
-
+<!-- ==================== TOPPERS SECTION ==================== -->
 <section class="section section-alt">
     <div class="container">
+        
         <div class="section-head">
-            <h2>World-Class Student Facilities</h2>
-            <p>Everything you need to learn, build, and grow — on one campus.</p>
+            <h2>Our 100/100 Toppers</h2>
+            <p>Empowering students to achieve perfection in computer science.</p>
         </div>
+        
         <div class="grid grid-3">
-            {% for f in facilities %}
-            <div class="facility-card">
-                <div class="card-icon">{{ f.icon }}</div>
-                <h3>{{ f.title }}</h3>
-                <p>{{ f.desc }}</p>
+            {% for t in toppers %}
+            <div class="topper-card">
+                <div class="marks-badge">100 / 100 MARKS</div>
+                <div class="topper-info">
+                    <div class="avatar-circle">{{ t.initials }}</div>
+                    <div>
+                        <h3>{{ t.name }}</h3>
+                        <p>{{ t.school }}</p>
+                        <span class="course-tag">{{ t.course }}</span>
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
-        <div class="center mt-3">
-            <a href="{{ url_for('facilities') }}" class="btn btn-primary">Explore All Facilities</a>
+
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="{{ url_for('toppers') }}" class="btn-secondary" style="display: inline-block; width: auto; padding: 0.8rem 2rem;">
+                View All Toppers
+            </a>
         </div>
+
     </div>
 </section>
 
-<section class="container section">
-    <div class="section-head">
-        <h2>Trusted by Industry Leaders</h2>
-        <p>Our graduates power innovation at top companies worldwide.</p>
-    </div>
-    <div class="logo-row">
-        {% for r in recruiters %}<span class="logo-chip">{{ r }}</span>{% endfor %}
+<!-- ==================== QUICK COURSES PREVIEW ==================== -->
+<section class="section">
+    <div class="container">
+        
+        <div class="section-head">
+            <h2>Professional Courses</h2>
+            <p>Industry-recognized certifications to boost your career.</p>
+        </div>
+
+        <div class="grid grid-3">
+            <!-- We only show the first 3 courses on the homepage -->
+            {% for c in courses[:3] %}
+            <div class="course-card">
+                <div class="course-top">
+                    <span class="badge-duration">{{ c.duration }}</span>
+                    <span class="icon">{{ c.icon }}</span>
+                </div>
+                <h3>{{ c.title }}</h3>
+                <p class="subtitle">{{ c.subtitle }}</p>
+                <p class="desc">{{ c.desc }}</p>
+                <div class="course-footer">
+                    <span class="discount-tag">🔥 10% Off Lump-Sum Fee</span>
+                    <a href="{{ url_for('contact') }}" class="link-orange">Apply Now →</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;">
+            <a href="{{ url_for('courses') }}" class="btn-secondary" style="display: inline-block; width: auto; padding: 0.8rem 2rem;">
+                View All Professional Courses
+            </a>
+        </div>
+
     </div>
 </section>
 
-<section class="cta-band">
-    <div class="container cta-inner">
-        <h2>Ready to Build Your Future?</h2>
-        <p>Applications for the 2026 intake are now open.</p>
-        <a href="{{ url_for('contact') }}" class="btn btn-light">Start Your Application</a>
-    </div>
-</section>
 {% endblock %}
 </body>
 </html>

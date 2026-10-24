@@ -6,31 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-   {% extends "base.html" %}
-{% block title %}Programs · {{ INSTITUTE_NAME }}{% endblock %}
+ {% extends "base.html" %}
+{% block title %}Professional Courses | {{ INSTITUTE_NAME }}{% endblock %}
 
 {% block content %}
-<section class="page-hero">
+<section class="page-header text-center">
     <div class="container">
-        <h1>Academic Programs</h1>
-        <p>Industry-aligned degrees across undergraduate, postgraduate, and doctoral levels.</p>
+        <h1>Professional Courses</h1>
+        <p>Industry-recognized certifications to boost your career.</p>
     </div>
 </section>
 
 <section class="container section">
-    <div class="grid grid-2">
-        {% for p in programs %}
-        <div class="program-card program-card-lg">
-            <div class="program-header">
-                <span class="level-tag">{{ p.level }}</span>
-                <span class="program-code">{{ p.code }}</span>
+    <div class="grid grid-3">
+        {% for c in courses %}
+        <div class="course-card">
+            <div class="course-top">
+                <span class="badge-duration">{{ c.duration }}</span>
+                <span class="icon">{{ c.icon }}</span>
             </div>
-            <h3>{{ p.name }}</h3>
-            <p class="program-meta">⏱ {{ p.duration }} · 👥 {{ p.seats }} seats per year</p>
-            <ul class="pill-list">
-                {% for f in p.highlights %}<li>{{ f }}</li>{% endfor %}
-            </ul>
-            <a href="{{ url_for('contact') }}" class="btn btn-outline btn-sm">Enquire About This Program</a>
+            <h3>{{ c.title }}</h3>
+            <p class="subtitle">{{ c.subtitle }}</p>
+            <p class="desc">{{ c.desc }}</p>
+            <div class="course-footer">
+                <span class="discount-tag">🔥 10% Off Lump-Sum Fee</span>
+                <a href="{{ url_for('contact') }}" class="link-orange">Apply Now →</a>
+            </div>
         </div>
         {% endfor %}
     </div>

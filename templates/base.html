@@ -4,80 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ INSTITUTE_NAME }}{% endblock %}</title>
-    <meta name="description" content="National Institute of Computer Technology — 25 years of excellence in computing education, research, and placement.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-<header class="site-header">
-    <div class="topbar">
-        <div class="container topbar-inner">
-            <span>📍 {{ ADDRESS }}</span>
-            <span>📞 {{ PHONE }} &nbsp;|&nbsp; ✉️ {{ EMAIL }}</span>
-        </div>
-    </div>
-    <nav class="navbar">
-        <div class="container nav-inner">
-            <a href="{{ url_for('index') }}" class="brand">
-                <span class="brand-mark">NICT</span>
-                <span class="brand-name">
-                    {{ INSTITUTE_NAME }}
-                    <small>Established 2001 · 25 Years of Excellence</small>
-                </span>
-            </a>
-            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
-            <ul class="nav-links" id="navLinks">
-                {% for item in [('index','Home'),('about','About'),('courses','Programs'),
-                                ('facilities','Facilities'),('faculty','Faculty'),
-                                ('placements','Placements'),('contact','Contact')] %}
-                <li><a href="{{ url_for(item[0]) }}"
-                       class="{{ 'active' if request.endpoint == item[0] }}">{{ item[1] }}</a></li>
-                {% endfor %}
-                <li><a href="{{ url_for('contact') }}" class="btn-nav">Apply Now</a></li>
-            </ul>
-        </div>
-    </nav>
-</header>
 
-<main>
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">{{ message }}</div>
-            {% endfor %}
-        {% endwith %}
+<!-- Top Special Offer Bar -->
+<div class="top-offer-bar">
+    <span>🔥 SPECIAL OFFER: Get Flat <strong>10% DISCOUNT</strong> on One-Time Full Fee Payment! Enroll Today!</span>
+</div>
+
+<!-- Professional Navbar -->
+<nav class="navbar">
+    <div class="container nav-inner">
+        
+        <!-- Logo Area -->
+        <a href="{{ url_for('index') }}" class="brand">
+            <div class="brand-logo">NICT</div>
+            <div class="brand-text">
+                <strong>NICT COMPUTER</strong>
+                <small>TRAINING CENTER • JAMSHEDPUR</small>
+            </div>
+        </a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+        
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{{ url_for('index') }}" class="{{ 'active' if request.endpoint == 'index' }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}" class="{{ 'active' if request.endpoint == 'about' }}">About Us</a></li>
+            <li><a href="{{ url_for('toppers') }}" class="{{ 'active' if request.endpoint == 'toppers' }}">Toppers</a></li>
+            <li><a href="{{ url_for('school_syllabus') }}" class="{{ 'active' if request.endpoint == 'school_syllabus' }}">School Syllabus</a></li>
+            <li><a href="{{ url_for('courses') }}" class="{{ 'active' if request.endpoint == 'courses' }}">Courses</a></li>
+            <li><a href="{{ url_for('faculty') }}" class="{{ 'active' if request.endpoint == 'faculty' }}">Faculty</a></li>
+            <li><a href="{{ url_for('branches') }}" class="{{ 'active' if request.endpoint == 'branches' }}">Branches</a></li>
+            
+            <!-- Call to Action Buttons -->
+            <li><a href="{{ url_for('contact') }}" class="btn-enquiry">ADMISSION ENQUIRY</a></li>
+        </ul>
     </div>
+</nav>
+
+<!-- Main Content Area (Jahan baaki pages load honge) -->
+<main>
     {% block content %}{% endblock %}
 </main>
 
+<!-- Footer Area -->
 <footer class="site-footer">
-    <div class="container footer-grid">
-        <div>
-            <h4>NICT</h4>
-            <p>National Institute of Computer Technology — empowering future innovators since 2001.</p>
-        </div>
-        <div>
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="{{ url_for('about') }}">About Us</a></li>
-                <li><a href="{{ url_for('courses') }}">Programs</a></li>
-                <li><a href="{{ url_for('placements') }}">Placements</a></li>
-                <li><a href="{{ url_for('facilities') }}">Campus Life</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Contact</h4>
-            <p>{{ ADDRESS }}</p>
-            <p>{{ PHONE }}<br>{{ EMAIL }}</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© {{ 2026 }} {{ INSTITUTE_NAME }} · All Rights Reserved · NAAC A+ Accredited</p>
+    <div class="container">
+        <h3 class="footer-title">{{ INSTITUTE_NAME }} {{ TAGLINE }}</h3>
+        <p>Bagbera Branch: {{ MAIN_BRANCH.phone }} | Laxminagar Branch: {{ NEW_BRANCH.phone }}</p>
+        <p class="copyright">© All Rights Reserved. Empowering Jamshedpur Students in Computer Science & Technology.</p>
     </div>
 </footer>
 
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<!-- Mobile Menu Script -->
+<script>
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.getElementById('navLinks').classList.toggle('active');
+    });
+</script>
 </body>
 </html>

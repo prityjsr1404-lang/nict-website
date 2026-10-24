@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}Our Branches | {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-header text-center">
+    <div class="container">
+        <h1>Our Branches</h1>
+        <p>Walk in for counseling and class trial sessions.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="grid grid-2">
+        {% for b in branches %}
+        <div class="branch-card">
+            <div class="branch-header">
+                <span class="badge-branch {% if loop.index == 1 %}main{% else %}new{% endif %}">{{ b.type }}</span>
+                <span class="pin">📍</span>
+            </div>
+            <h2>{{ b.name }}</h2>
+            <p class="address">📍 {{ b.address }}</p>
+            
+            <div class="contact-box">
+                <p>📞 Contact Number:</p>
+                <h3>{{ b.phone }}</h3>
+            </div>
+            
+            <div class="branch-actions">
+                <a href="tel:{{ b.phone }}" class="btn-blue {% if loop.index == 2 %}btn-orange{% endif %}">Direct Call</a>
+                <a href="https://wa.me/91{{ b.phone }}" target="_blank" class="btn-green">WhatsApp</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

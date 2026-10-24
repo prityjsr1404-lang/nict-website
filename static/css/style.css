@@ -982,3 +982,54 @@ a {
         display: none;
     }
 }
+/* Logo Image Styling */
+.brand-logo-img {
+    height: 50px; /* Logo ki height set karein */
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px; /* Agar logo ke corners round karne hain */
+}
+
+/* Mobile screens ke liye logo thoda chhota */
+@media (max-width: 768px) {
+    .brand-logo-img {
+        height: 40px;
+    }
+}
+/* =========================================
+   ADMIN DASHBOARD & LOGIN STYLES
+   ========================================= */
+
+/* Table Responsive wrapper */
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 1.5rem !important;
+    }
+    .page-header .btn-secondary, 
+    .page-header .btn-orange {
+        padding: 0.5rem 1rem !important;
+        font-size: 0.85rem !important;
+    }
+}
+
+/* Custom Scrollbar for table on mobile */
+div[style*="overflow-x: auto;"]::-webkit-scrollbar {
+    height: 8px;
+}
+div[style*="overflow-x: auto;"]::-webkit-scrollbar-track {
+    background: #f1f5f9; 
+    border-radius: 4px;
+}
+div[style*="overflow-x: auto;"]::-webkit-scrollbar-thumb {
+    background: #cbd5e1; 
+    border-radius: 4px;
+}
+div[style*="overflow-x: auto;"]::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8; 
+}
+
+/* Form Control focus for Login */
+.form-wrapper input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+}

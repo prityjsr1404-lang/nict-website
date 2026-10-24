@@ -22,12 +22,18 @@
         
         <!-- Logo Area -->
         <a href="{{ url_for('index') }}" class="brand">
-            <div class="brand-logo">NICT</div>
-            <div class="brand-text">
-                <strong>NICT COMPUTER</strong>
-                <small>TRAINING CENTER • JAMSHEDPUR</small>
-            </div>
-        </a>
+    <!-- Logo Image -->
+    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="NICT Logo" class="brand-logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    
+    <!-- Fallback Logo (Agar image load na ho toh NICT text dikhega) -->
+    <div class="brand-logo" style="display: none;">NICT</div>
+    
+    <!-- Brand Text -->
+    <div class="brand-text">
+        <strong>NICT COMPUTER</strong>
+        <small>TRAINING CENTER • JAMSHEDPUR</small>
+    </div>
+</a>
         
         <!-- Mobile Menu Toggle -->
         <button class="menu-toggle" aria-label="Toggle navigation">☰</button>

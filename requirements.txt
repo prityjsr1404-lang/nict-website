@@ -4,3 +4,6 @@ WTForms==3.1.2
 gunicorn==21.2.0
 Flask
 gunicorn
+Flask-SQLAlchemy
+Flask-Login
+Werkzeug

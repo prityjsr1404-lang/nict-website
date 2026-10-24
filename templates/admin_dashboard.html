@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  {% extends "base.html" %}
+{% block title %}Admin Dashboard | {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-header" style="padding: 3rem 0;">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+            <h1 style="font-size: 2rem; margin-bottom: 0.2rem;">Enquiry Dashboard</h1>
+            <p style="color: #cbd5e1; font-size: 1rem;">Welcome back, <strong>{{ current_user.username|capitalize }}</strong>!</p>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+            <a href="{{ url_for('index') }}" class="btn-secondary" style="background: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.2); padding: 0.6rem 1.2rem; font-size: 0.9rem;">← Back to Website</a>
+            <a href="{{ url_for('logout') }}" class="btn-orange" style="padding: 0.6rem 1.5rem; border-radius: 6px; text-decoration: none; color: white; font-weight: 600; font-size: 0.9rem; background: #dc2626;">Logout</a>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt" style="min-height: 60vh;">
+    <div class="container">
+        
+        <!-- Dashboard Stats Summary -->
+        <div class="grid grid-3" style="margin-bottom: 2rem;">
+            <div class="syllabus-card" style="padding: 1.5rem; border-left: 4px solid var(--accent);">
+                <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 600;">Total Enquiries</p>
+                <h2 style="color: var(--primary); font-size: 2rem; margin-top: 0.5rem;">{{ enquiries|length }}</h2>
+            </div>
+        </div>
+
+        <!-- Enquiries Table -->
+        <div style="background: white; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); border: 1px solid var(--border); overflow: hidden;">
+            <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); background: #f8fafc; display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="color: var(--primary); font-size: 1.2rem;">Recent Student Enquiries</h3>
+                <span class="badge-blue">Live Data</span>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; min-width: 800px;">
+                    <thead>
+                        <tr style="background: white; border-bottom: 2px solid var(--border);">
+                            <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;">Date & Time</th>
+                            <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;">Student Name</th>
+                            <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;">Phone Number</th>
+                            <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;">Course Interest</th>
+                            <th style="padding: 1rem 1.5rem; color: var(--text-muted); font-weight: 600; font-size: 0.85rem; text-transform: uppercase;">Message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for e in enquiries %}
+                        <tr style="border-bottom: 1px solid var(--border); transition: background 0.2s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='white'">
+                            <td style="padding: 1.2rem 1.5rem; font-size: 0.9rem; color: var(--text-muted);">
+                                {{ e.date_submitted.strftime('%d %b %Y') }}<br>
+                                <small style="font-size: 0.75rem;">{{ e.date_submitted.strftime('%I:%M %p') }}</small>
+                            </td>
+                            <td style="padding: 1.2rem 1.5rem; font-weight: 700; color: var(--primary);">
+                                {{ e.name }}
+                            </td>
+                            <td style="padding: 1.2rem 1.5rem;">
+                                <a href="tel:{{ e.phone }}" style="color: var(--accent); font-weight: 600; background: #fffbeb; padding: 0.3rem 0.6rem; border-radius: 4px; border: 1px solid #fde68a;">
+                                    📞 {{ e.phone }}
+                                </a>
+                            </td>
+                            <td style="padding: 1.2rem 1.5rem;">
+                                <span class="course-tag" style="font-size: 0.85rem; padding: 0.4rem 0.8rem;">{{ e.course }}</span>
+                            </td>
+                            <td style="padding: 1.2rem 1.5rem; font-size: 0.9rem; color: var(--text-main); max-width: 250px; line-height: 1.5;">
+                                {{ e.message }}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" style="padding: 4rem 1.5rem; text-align: center; color: var(--text-muted);">
+                                <div style="font-size: 3rem; margin-bottom: 1rem;">📭</div>
+                                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">No Enquiries Yet</h3>
+                                <p>When students fill out the contact form, their data will appear here.</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

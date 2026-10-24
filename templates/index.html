@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}{{ INSTITUTE_NAME }} · Shaping Future Innovators{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container hero-inner">
+        <div class="hero-text">
+            <span class="badge">25 Years of Excellence · NAAC A+</span>
+            <h1>Shaping the Next Generation of <span class="accent">Tech Innovators</span></h1>
+            <p>For 25 years, NICT has been the launchpad for 12,000+ technology leaders. World-class programs, cutting-edge facilities, and an unwavering focus on your future.</p>
+            <div class="hero-actions">
+                <a href="{{ url_for('courses') }}" class="btn btn-primary">Explore Programs</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-outline">Admission Enquiry</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="stats-bar">
+        {% for s in stats %}
+        <div class="stat">
+            <div class="stat-value">{{ s.value }}</div>
+            <div class="stat-label">{{ s.label }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="container section">
+    <div class="section-head">
+        <h2>Why NICT?</h2>
+        <p>A legacy of academic excellence backed by modern infrastructure and industry connection.</p>
+    </div>
+    <div class="grid grid-3">
+        {% for h in highlights %}
+        <div class="card">
+            <div class="card-icon">{{ h.icon }}</div>
+            <h3>{{ h.title }}</h3>
+            <p>{{ h.desc }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="container section">
+    <div class="section-head">
+        <h2>Featured Programs</h2>
+        <p>Industry-aligned degrees designed for the careers of tomorrow.</p>
+    </div>
+    <div class="grid grid-3">
+        {% for p in programs %}
+        <div class="program-card">
+            <span class="level-tag">{{ p.level }}</span>
+            <h3>{{ p.name }}</h3>
+            <p class="program-meta">{{ p.duration }} · {{ p.seats }} seats</p>
+            <ul class="pill-list">
+                {% for f in p.highlights %}<li>{{ f }}</li>{% endfor %}
+            </ul>
+            <a href="{{ url_for('courses') }}" class="link-more">View details →</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-head">
+            <h2>World-Class Student Facilities</h2>
+            <p>Everything you need to learn, build, and grow — on one campus.</p>
+        </div>
+        <div class="grid grid-3">
+            {% for f in facilities %}
+            <div class="facility-card">
+                <div class="card-icon">{{ f.icon }}</div>
+                <h3>{{ f.title }}</h3>
+                <p>{{ f.desc }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="center mt-3">
+            <a href="{{ url_for('facilities') }}" class="btn btn-primary">Explore All Facilities</a>
+        </div>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="section-head">
+        <h2>Trusted by Industry Leaders</h2>
+        <p>Our graduates power innovation at top companies worldwide.</p>
+    </div>
+    <div class="logo-row">
+        {% for r in recruiters %}<span class="logo-chip">{{ r }}</span>{% endfor %}
+    </div>
+</section>
+
+<section class="cta-band">
+    <div class="container cta-inner">
+        <h2>Ready to Build Your Future?</h2>
+        <p>Applications for the 2026 intake are now open.</p>
+        <a href="{{ url_for('contact') }}" class="btn btn-light">Start Your Application</a>
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

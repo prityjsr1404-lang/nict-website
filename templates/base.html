@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ INSTITUTE_NAME }}{% endblock %}</title>
+    <meta name="description" content="National Institute of Computer Technology — 25 years of excellence in computing education, research, and placement.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<header class="site-header">
+    <div class="topbar">
+        <div class="container topbar-inner">
+            <span>📍 {{ ADDRESS }}</span>
+            <span>📞 {{ PHONE }} &nbsp;|&nbsp; ✉️ {{ EMAIL }}</span>
+        </div>
+    </div>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="{{ url_for('index') }}" class="brand">
+                <span class="brand-mark">NICT</span>
+                <span class="brand-name">
+                    {{ INSTITUTE_NAME }}
+                    <small>Established 2001 · 25 Years of Excellence</small>
+                </span>
+            </a>
+            <button class="menu-toggle" aria-label="Toggle navigation">☰</button>
+            <ul class="nav-links" id="navLinks">
+                {% for item in [('index','Home'),('about','About'),('courses','Programs'),
+                                ('facilities','Facilities'),('faculty','Faculty'),
+                                ('placements','Placements'),('contact','Contact')] %}
+                <li><a href="{{ url_for(item[0]) }}"
+                       class="{{ 'active' if request.endpoint == item[0] }}">{{ item[1] }}</a></li>
+                {% endfor %}
+                <li><a href="{{ url_for('contact') }}" class="btn-nav">Apply Now</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endwith %}
+    </div>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <h4>NICT</h4>
+            <p>National Institute of Computer Technology — empowering future innovators since 2001.</p>
+        </div>
+        <div>
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+                <li><a href="{{ url_for('courses') }}">Programs</a></li>
+                <li><a href="{{ url_for('placements') }}">Placements</a></li>
+                <li><a href="{{ url_for('facilities') }}">Campus Life</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p>{{ ADDRESS }}</p>
+            <p>{{ PHONE }}<br>{{ EMAIL }}</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© {{ 2026 }} {{ INSTITUTE_NAME }} · All Rights Reserved · NAAC A+ Accredited</p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

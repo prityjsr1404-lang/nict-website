@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}Faculty · {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1>Our Faculty</h1>
+        <p>Learn from accomplished researchers and industry practitioners.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="grid grid-3">
+        {% for f in faculty %}
+        <div class="faculty-card">
+            <div class="avatar">{{ f.name.split()[1][0] if f.name.split()|length > 1 else f.name[0] }}</div>
+            <h3>{{ f.name }}</h3>
+            <p class="faculty-title">{{ f.title }}</p>
+            <p class="faculty-qual">{{ f.qual }}</p>
+            <p class="faculty-research"><strong>Research:</strong> {{ f.research }}</p>
+            <p class="faculty-exp">{{ f.experience }} years of experience</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

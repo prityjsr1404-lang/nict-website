@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   {% extends "base.html" %}
+{% block title %}Programs · {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1>Academic Programs</h1>
+        <p>Industry-aligned degrees across undergraduate, postgraduate, and doctoral levels.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="grid grid-2">
+        {% for p in programs %}
+        <div class="program-card program-card-lg">
+            <div class="program-header">
+                <span class="level-tag">{{ p.level }}</span>
+                <span class="program-code">{{ p.code }}</span>
+            </div>
+            <h3>{{ p.name }}</h3>
+            <p class="program-meta">⏱ {{ p.duration }} · 👥 {{ p.seats }} seats per year</p>
+            <ul class="pill-list">
+                {% for f in p.highlights %}<li>{{ f }}</li>{% endfor %}
+            </ul>
+            <a href="{{ url_for('contact') }}" class="btn btn-outline btn-sm">Enquire About This Program</a>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

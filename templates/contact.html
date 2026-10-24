@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}Contact Us · {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>Have a question about admissions, programs, or campus life? We're here to help.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="two-col">
+        <div>
+            <h2>Get in Touch</h2>
+            <p>Fill out the form and our admissions team will respond within 24 hours (working days).</p>
+
+            <form method="POST" novalidate class="contact-form">
+                {{ form.hidden_tag() }}
+
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form.name.label }}
+                        {{ form.name(class="form-control", placeholder="Your full name") }}
+                        {% for e in form.name.errors %}<span class="error">{{ e }}</span>{% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label }}
+                        {{ form.email(class="form-control", placeholder="you@example.com") }}
+                        {% for e in form.email.errors %}<span class="error">{{ e }}</span>{% endfor %}
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        {{ form.phone.label }}
+                        {{ form.phone(class="form-control", placeholder="+91 ...") }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.interest.label }}
+                        {{ form.interest(class="form-control") }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form.message.label }}
+                    {{ form.message(class="form-control", rows=6, placeholder="Tell us how we can help…") }}
+                    {% for e in form.message.errors %}<span class="error">{{ e }}</span>{% endfor %}
+                </div>
+
+                {{ form.submit(class="btn btn-primary") }}
+            </form>
+        </div>
+
+        <aside class="contact-info">
+            <h3>Visit Us</h3>
+            <p>{{ ADDRESS }}</p>
+            <h3>Call Us</h3>
+            <p>{{ PHONE }}</p>
+            <h3>Email</h3>
+            <p>{{ EMAIL }}</p>
+            <h3>Office Hours</h3>
+            <p>Monday – Friday: 9:00 AM – 5:30 PM<br>Saturday: 9:00 AM – 1:00 PM</p>
+        </aside>
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "base.html" %}
+{% block title %}About Us · {{ INSTITUTE_NAME }}{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <h1>About NICT</h1>
+        <p>25 years of shaping innovation, research, and industry leaders in computing.</p>
+    </div>
+</section>
+
+<section class="container section">
+    <div class="two-col">
+        <div>
+            <h2>Our Story</h2>
+            <p>Founded in 2001, the National Institute of Computer Technology began with 60 students and a single vision: to make world-class computing education accessible to every deserving learner.</p>
+            <p>Today, we are a <strong>NAAC A+ accredited</strong> institution serving over 5,000 students across undergraduate, postgraduate, and doctoral programs. Our alumni lead product teams at Google, Microsoft, Amazon, and hundreds of pioneering startups worldwide.</p>
+            <p>Our 40-acre smart campus houses advanced research labs, a 24/7 digital library, startup incubation space, and a dedicated career development centre — everything required to transform curious minds into industry-ready professionals.</p>
+        </div>
+        <div class="highlight-box">
+            <h3>Quick Facts</h3>
+            <ul class="fact-list">
+                <li><strong>Established:</strong> 2001</li>
+                <li><strong>Accreditation:</strong> NAAC A+</li>
+                <li><strong>Campus:</strong> 40 acres, green-certified</li>
+                <li><strong>Students:</strong> 5,200+</li>
+                <li><strong>Faculty:</strong> 120+ (80% Ph.D.)</li>
+                <li><strong>Alumni:</strong> 12,000+ in 30+ countries</li>
+                <li><strong>Placement:</strong> 95% (2025)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="section section-alt">
+    <div class="container">
+        <div class="section-head"><h2>Milestones</h2><p>Our journey over 25 years.</p></div>
+        <div class="timeline">
+            {% for t in timeline %}
+            <div class="timeline-item">
+                <div class="timeline-year">{{ t.year }}</div>
+                <div class="timeline-body">
+                    <h3>{{ t.title }}</h3>
+                    <p>{{ t.desc }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+</body>
+</html>

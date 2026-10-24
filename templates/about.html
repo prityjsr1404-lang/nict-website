@@ -7,55 +7,122 @@
 </head>
 <body>
     {% extends "base.html" %}
-{% block title %}About Us · {{ INSTITUTE_NAME }}{% endblock %}
+{% block title %}About Us | {{ INSTITUTE_NAME }}{% endblock %}
 
 {% block content %}
-<section class="page-hero">
+
+<!-- Page Header -->
+<section class="page-header text-center">
     <div class="container">
-        <h1>About NICT</h1>
-        <p>25 years of shaping innovation, research, and industry leaders in computing.</p>
+        <h1>About NICT Jamshedpur</h1>
+        <p>Empowering students with world-class computer education since 2001.</p>
     </div>
 </section>
 
-<section class="container section">
-    <div class="two-col">
-        <div>
-            <h2>Our Story</h2>
-            <p>Founded in 2001, the National Institute of Computer Technology began with 60 students and a single vision: to make world-class computing education accessible to every deserving learner.</p>
-            <p>Today, we are a <strong>NAAC A+ accredited</strong> institution serving over 5,000 students across undergraduate, postgraduate, and doctoral programs. Our alumni lead product teams at Google, Microsoft, Amazon, and hundreds of pioneering startups worldwide.</p>
-            <p>Our 40-acre smart campus houses advanced research labs, a 24/7 digital library, startup incubation space, and a dedicated career development centre — everything required to transform curious minds into industry-ready professionals.</p>
-        </div>
-        <div class="highlight-box">
-            <h3>Quick Facts</h3>
-            <ul class="fact-list">
-                <li><strong>Established:</strong> 2001</li>
-                <li><strong>Accreditation:</strong> NAAC A+</li>
-                <li><strong>Campus:</strong> 40 acres, green-certified</li>
-                <li><strong>Students:</strong> 5,200+</li>
-                <li><strong>Faculty:</strong> 120+ (80% Ph.D.)</li>
-                <li><strong>Alumni:</strong> 12,000+ in 30+ countries</li>
-                <li><strong>Placement:</strong> 95% (2025)</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<section class="section section-alt">
+<!-- Owner / Director Message Section -->
+<section class="section" style="background: white;">
     <div class="container">
-        <div class="section-head"><h2>Milestones</h2><p>Our journey over 25 years.</p></div>
-        <div class="timeline">
-            {% for t in timeline %}
-            <div class="timeline-item">
-                <div class="timeline-year">{{ t.year }}</div>
-                <div class="timeline-body">
-                    <h3>{{ t.title }}</h3>
-                    <p>{{ t.desc }}</p>
+        <div class="owner-profile">
+            <div class="owner-image-wrapper">
+                <!-- Owner ki image yahan aayegi -->
+                <img src="{{ url_for('static', filename='images/owner.jpg') }}" alt="Director - NICT" onerror="this.src='https://via.placeholder.com/300x350?text=Owner+Photo';">
+            </div>
+            <div class="owner-message">
+                <span class="badge-yellow" style="margin-bottom: 1rem;">Director's Message</span>
+                <h2>"Our goal is not just to teach computers, but to build careers."</h2>
+                <p>
+                    Welcome to NICT Jamshedpur. For the past two decades, we have dedicated ourselves to providing affordable, high-quality, and industry-relevant computer education to the youth of Jamshedpur. 
+                </p>
+                <p>
+                    Whether it is helping a school student score 100/100 in board exams, or training a graduate for corporate placements, we ensure every student gets individual attention and practical knowledge.
+                </p>
+                <div class="owner-signature">
+                    <h4>Mr. Kishor Kumar Yadav</h4>
+                    <p>Founder, NICT Jamshedpur</p>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 </section>
+
+<!-- Our Story & Quick Facts -->
+<section class="section section-alt">
+    <div class="container">
+        <div class="grid grid-2" style="align-items: center;">
+            <div>
+                <h2 style="color: var(--primary); margin-bottom: 1rem; font-size: 2rem;">Our Journey</h2>
+                <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1rem; line-height: 1.8;">
+                    Founded in 2001, the National Institute of Computer Technology (NICT) began with a single vision: to make world-class computing education accessible to every deserving learner in Jamshedpur.
+                </p>
+                <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 1rem; line-height: 1.8;">
+                    Today, we are proud to be one of the leading computer training centers, with two sprawling branches in <strong>Bagbera</strong> and <strong>Laxminagar</strong>. 
+                </p>
+                <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.8;">
+                    Our alumni are working in top MNCs, and our school students consistently secure perfect 100/100 scores in ICSE, ISC, CBSE, and JAC boards. We believe in practical learning, which is why we maintain a strict <strong>1-Student 1-PC</strong> policy in our labs.
+                </p>
+            </div>
+            
+            <div class="highlight-box" style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+                <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem;">Why Students Trust Us</h3>
+                <ul class="check-list" style="margin-bottom: 0;">
+                    <li><strong>Proven Track Record:</strong> 20+ Years of Excellence</li>
+                    <li><strong>Board Toppers:</strong> Consistent 100/100 scores</li>
+                    <li><strong>Infrastructure:</strong> High-Speed Internet & AC Labs</li>
+                    <li><strong>Faculty:</strong> Experienced & Certified Teachers</li>
+                    <li><strong>Affordability:</strong> Premium education at affordable fees</li>
+                    <li><strong>Placement:</strong> Dedicated cell for professional courses</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Milestones / Timeline -->
+<section class="section">
+    <div class="container">
+        <div class="section-head text-center">
+            <h2>Our Milestones</h2>
+            <p>How we grew over the years.</p>
+        </div>
+        <div class="timeline">
+            <!-- Timeline Item 1 -->
+            <div class="timeline-item">
+                <div class="timeline-year">2001</div>
+                <div class="timeline-body">
+                    <h3>NICT is Founded</h3>
+                    <p>Started our journey with a small lab in Bagbera with a vision to provide quality computer education.</p>
+                </div>
+            </div>
+            <!-- Timeline Item 2 -->
+            
+            
+            <div class="timeline-item">
+                <div class="timeline-year">2010</div>
+                <div class="timeline-body">
+                    <h3>Professional Course Excellence</h3>
+                    <p>Became a premier center for Tally Prime, Advanced Excel, and DTP courses with top placement records.</p>
+                </div>
+            </div>
+            <!-- Timeline Item 3 -->
+            <div class="timeline-item">
+                <div class="timeline-year">2018</div>
+                <div class="timeline-body">
+                    <h3>100/100 Board Exam Legacy</h3>
+                    <p>Our students consistently achieved perfect 100/100 marks in ICSE, ISC, and CBSE Computer Science exams.</p>
+                </div>
+            </div>
+            <!-- Timeline Item 4-->
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-body">
+                    <h3>Expansion to Laxminagar</h3>
+                    <p>Due to growing demand and trust, we opened our second branch to serve more students.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
 </body>
 </html>

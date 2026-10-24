@@ -7,28 +7,47 @@
 </head>
 <body>
     {% extends "base.html" %}
-{% block title %}Faculty · {{ INSTITUTE_NAME }}{% endblock %}
+{% block title %}Our Faculty | {{ INSTITUTE_NAME }}{% endblock %}
 
 {% block content %}
-<section class="page-hero">
+<section class="page-header text-center">
     <div class="container">
-        <h1>Our Faculty</h1>
-        <p>Learn from accomplished researchers and industry practitioners.</p>
+        <h1>Meet Our Faculty</h1>
+        <p>Learn from the best industry experts and board exam specialists.</p>
     </div>
 </section>
 
-<section class="container section">
-    <div class="grid grid-3">
-        {% for f in faculty %}
-        <div class="faculty-card">
-            <div class="avatar">{{ f.name.split()[1][0] if f.name.split()|length > 1 else f.name[0] }}</div>
-            <h3>{{ f.name }}</h3>
-            <p class="faculty-title">{{ f.title }}</p>
-            <p class="faculty-qual">{{ f.qual }}</p>
-            <p class="faculty-research"><strong>Research:</strong> {{ f.research }}</p>
-            <p class="faculty-exp">{{ f.experience }} years of experience</p>
+<section class="section section-alt">
+    <div class="container">
+        <div class="grid grid-2">
+            {% for f in faculty %}
+            <div class="faculty-profile-card">
+                
+                <!-- Image Area -->
+                <div class="faculty-img-wrapper">
+                    <!-- Agar image mil jati hai toh ye show hogi, warna fallback as initials -->
+                    <img src="{{ url_for('static', filename='images/faculty/' + f.image) }}" 
+                         alt="{{ f.name }}" 
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="faculty-avatar-fallback" style="display: none;">
+                        {{ f.initials }}
+                    </div>
+                </div>
+
+                <!-- Info Area -->
+                <div class="faculty-details">
+                    <h3>{{ f.name }}</h3>
+                    <p class="faculty-title">{{ f.title }}</p>
+                    <p class="faculty-qual">🎓 {{ f.qual }}</p>
+                    
+                    <div class="faculty-desc-box">
+                        <p>{{ f.desc }}</p>
+                    </div>
+                </div>
+                
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
 </section>
 {% endblock %}

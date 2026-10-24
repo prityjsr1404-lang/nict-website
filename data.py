@@ -110,25 +110,30 @@ ABOUT_TEXT = {
 }
 
 # ============ FACULTY ============
+# ============ FACULTY ============
 FACULTY = [
     {
-        "name": "Mr. Mahesh Sharma", "title": "Director & Sr. Faculty (All Programming Languages)", 
-        "qual": "M.Tech (CSE), 15+ Years Exp.", "initials": "MS",
-        "desc": "Expert in OOPs concepts, Data Structures, and Board Exam preparation (ICSE/ISC/CBSE)."
+        "name": "Mr. Mahesh Sharma", "title": "Director & Sr. Faculty (Java & Python)", 
+        "qual": "B.Com, 15+ Years Exp.", "initials": "MS",
+        "desc": "Expert in OOPs concepts, Data Structures, and Board Exam preparation (ICSE/ISC/CBSE).",
+        "image": "rajesh.jpg" # Naya field
     },
     {
         "name": "Mr. Santosh Poddar", "title": "Sr. Faculty (Office Automation & Tally)",
         "qual": "M.Com, Tally Certified, 10+ Years Exp.", "initials": "SP",
-        "desc": "Specializes in Advanced Excel, Tally Prime with GST, and corporate accounting."
+        "desc": "Specializes in Advanced Excel, Tally Prime with GST, and corporate accounting.",
+        "image": "priya.jpg"
     },
     {
         "name": "Ms. Prity Kumari", "title": "Sr. Faculty (Web Development & Programming Languages)",
         "qual": "BCA, Adobe Certified, 4+ Years Exp.", "initials": "PK",
-        "desc": "Teaches HTML/CSS, JavaScript,  and development."
+        "desc": "Teaches HTML/CSS, JavaScript,  for design and development.",
+        "image": "amit.jpg"
     },
     {
         "name": "Mr. Sudama Tanti", "title": "Faculty (School Syllabus - JAC/CBSE)",
-        "qual": "BCA, 3+ Years Exp.", "initials": "ST",
-        "desc": "Dedicated to Junior classes (C++, Scratch) and JAC board computer syllabus."
+        "qual": "BCA, 6+ Years Exp.", "initials": "ST",
+        "desc": "Dedicated to Junior classes (C++, Scratch) and JAC board computer syllabus.",
+        "image": "neha.jpg"
     }
 ]

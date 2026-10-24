@@ -136,4 +136,17 @@ FACULTY = [
         "desc": "Dedicated to Junior classes (C++, Scratch) and JAC board computer syllabus.",
         "image": "sudama.jpg"
     }
+    , {
+            "name": "Mr. Subodh Kumar", "title": "Sr. Faculty (Tally, Marg and DTP)",
+            "qual": "B.Com, 6+ Years Exp.", "initials": "SK",
+            "desc": "Specializes in Advanced Excel, Tally Prime with GST, and corporate accounting, DTP,Photoshop and CoralDraw Designing .",
+            "image": "subodh.jpg"
+        },
+        {
+            "name": "Ms. Priya Kumari", "title": "Faculty (School Syllabus - JAC/CBSE)",
+                   "qual": "BCA, 2+ Years Exp.", "initials": "PK",
+                   "desc": "Dedicated to Junior classes (C++, Scratch) and JAC board computer syllabus.",
+                   "image": "priya.jpg"
+                   }
+    
 ]

@@ -7,7 +7,16 @@ from flask_login import LoginManager, login_user, login_required, logout_user, c
 from werkzeug.security import generate_password_hash, check_password_hash
 from config import Config
 import data
+from flask import Flask, send_from_directory
 
+app = Flask(__name__)
+
+@app.route('/google1234567890abcdef.html')
+def google_verification():
+    return send_from_directory(
+        app.root_path,
+        'google1234567890abcdef.html'
+    )
 # Models Import karein
 from models import db, User, Enquiry
 

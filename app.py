@@ -11,11 +11,11 @@ from flask import Flask, send_from_directory
 
 app = Flask(__name__)
 
-@app.route('/google1234567890abcdef.html')
+@app.route('/google1b79e05b29759fc3.html')
 def google_verification():
     return send_from_directory(
         app.root_path,
-        'google1234567890abcdef.html'
+        'google1b79e05b29759fc3.html'
     )
 # Models Import karein
 from models import db, User, Enquiry

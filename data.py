@@ -116,7 +116,7 @@ FACULTY = [
         "name": "Mr. Mahesh Sharma", "title": "Director & Sr. Faculty (Java & Python)", 
         "qual": "B.Com, 15+ Years Exp.", "initials": "MS",
         "desc": "Expert in OOPs concepts, Data Structures, and Board Exam preparation (ICSE/ISC/CBSE).",
-        "image": "mahesh.jpg" # Naya field
+        "image": "mahesh.png" # Naya field
     },
     {
         "name": "Mr. Santosh Poddar", "title": "Sr. Faculty (Office Automation & Tally)",
@@ -128,19 +128,19 @@ FACULTY = [
         "name": "Ms. Prity Kumari", "title": "Sr. Faculty (Web Development & Programming Languages)",
         "qual": "BCA, Adobe Certified, 4+ Years Exp.", "initials": "PK",
         "desc": "Teaches HTML/CSS, JavaScript,  for design and development.",
-        "image": "prity.jpg"
+        "image": "prity.png"
     },
     {
         "name": "Mr. Sudama Tanti", "title": "Faculty (School Syllabus - JAC/CBSE)",
         "qual": "BCA, 6+ Years Exp.", "initials": "ST",
         "desc": "Dedicated to Junior classes (C++, Scratch) and JAC board computer syllabus.",
-        "image": "sudama.jpg"
+        "image": "sudama.jpeg"
     }
     , {
             "name": "Mr. Subodh Kumar", "title": "Sr. Faculty (Tally, Marg and DTP)",
             "qual": "B.Com, 6+ Years Exp.", "initials": "SK",
             "desc": "Specializes in Advanced Excel, Tally Prime with GST, and corporate accounting, DTP,Photoshop and CoralDraw Designing .",
-            "image": "subodh.jpg"
+            "image": "subodh.png"
         },
         {
             "name": "Ms. Priya Kumari", "title": "Faculty (School Syllabus - JAC/CBSE)",
